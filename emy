@@ -1,1 +1,63 @@
-ema
+#include <stdio.h>
+#include <string.h>
+#include <stdarg.h>
+
+int _printf_char(char c)
+{
+    write(1, &c, 1);
+    return 1;
+}
+
+int _printf_string(char *s)
+{
+    if (s == NULL)
+    {
+        return 0;
+    }
+    else
+    {
+        write(1, s, strlen(s));
+        return strlen(s);
+    }
+}
+
+int _printf(const char *format, ...)
+{
+    int characters_printed = 0;
+    va_list list;
+    va_start(list, format);
+    while (*format)
+    {
+        if (*format != '%')
+        {
+            characters_printed += _printf_char(*format);
+        }
+        else
+        {
+            format++;
+            switch (*format)
+            {
+            case '%':
+                characters_printed += _printf_char('%');
+                break;
+            case 'c':
+                characters_printed += _printf_char(va_arg(list, int));
+                break;
+            case 's':
+                characters_printed += _printf_string(va_arg(list, char *));
+                break;
+            case 'd':
+                characters_printed += printf("%d", va_arg(list, int));
+                break;
+            case 'i':
+                characters_printed += printf("%i", va_arg(list, int));
+                break;
+            default:
+                return 0;
+            }
+        }
+        format++;
+    }
+    va_end(list);
+    return characters_printed;
+}
