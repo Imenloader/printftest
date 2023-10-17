@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 #ifndef MAIN_H
 #define MAIN_H
 #include <stdio.h>
@@ -41,29 +40,3 @@ typedef struct specifier
 } specifier;
 
 #endif
-=======
-#ifndef _PRINTF_H
-#define _PRINTF_H
-
-#include <stdarg.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <limits.h>
-#include <stdlib.h>
-#include <string.h>
-
-#define OUTPUT_BUF_SIZE 1024
-#define BUF_FLUSH -1
-
-#define NULL_STRING "(null)"
-
-#define CONVERT_LOWERCASE 1
-#define CONVERT_UNSIGINED 2
-
-
-
-
-/*_printf.c module */
-int _printf(const char *format, ...);
-#endif 
->>>>>>> 67782eab519eda037fcc1e37e07439097c499a1f
