@@ -61,3 +61,4 @@ int _printf(const char *format, ...)
     va_end(list);
     return characters_printed;
 }
+gcc -Wall -Werror -Wextra -pedantic -std=gnu89 -Wno-format *.c
